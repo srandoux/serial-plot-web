@@ -14,7 +14,7 @@ function removePoint(chart) {
   });
 }
 
-const numPoints = 150;  // length of the visible plot
+const numPoints = 1500;  // length of the visible plot
 var pointsCnt = 0;  // count up to 'numPoints'
 
 const charts = new Array(numPlots);
@@ -37,8 +37,8 @@ for (var i=0; i<numPlots; i++) {
         yAxes: [{
           ticks: {
             min: 0,
-            max: 4095,
-            stepSize: 512
+            max: 1024,
+            stepSize: 128
           }
         }],
         xAxes: [{

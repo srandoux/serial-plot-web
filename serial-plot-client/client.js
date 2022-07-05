@@ -39,7 +39,7 @@ socket.addEventListener('open', function(event) {
 
 socket.addEventListener('message', function(event) {
   const hexStr = event.data;
-  pointsArr = parseInts32LE(hexStr);
+  pointsArr = [hexStr];//parseInts32LE(hexStr);
 });
 
 
@@ -48,7 +48,7 @@ socket.addEventListener('message', function(event) {
  *  Plotting section
  */
 const updateTimeout = 50;  // ms
-const numPlots = 2;
+const numPlots = 1;
 var pointsArr = new Array(numPlots);
 
 // benchmark

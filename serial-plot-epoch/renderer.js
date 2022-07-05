@@ -19,7 +19,7 @@ for (var i=0, now=new Date().getTime(); i<numPlots; i++) {
     axes: ['left', 'bottom'],
     fps: 60,
     queueSize: 1,
-    range: [0, 4095]
+    range: [0, 1024]
   });
 }
 

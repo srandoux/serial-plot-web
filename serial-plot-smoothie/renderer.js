@@ -12,7 +12,7 @@ for (var i=0; i<numPlots; i++) {
 
   charts[i] = new Smoothie.SmoothieChart({
     minValue: 0.0,
-    maxValue: 4095.0,
+    maxValue: 1024.0,
     tooltip: true,
     timestampFormatter: Smoothie.SmoothieChart.timeFormatter,
     interpolation: 'linear'

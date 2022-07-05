@@ -3,7 +3,7 @@
  */
 const SerialPort = require('serialport');
 const serialPort = new SerialPort(
-  '/dev/cu.wchusbserial14220',
+  '/dev/tty.usbserial-10',
   { baudRate: 115200 },
   function (err) {
     if (err)
@@ -16,11 +16,15 @@ serialPort.on('open', function() {
     console.log("Serial port is open");
 });
 
+let Readline = SerialPort.parsers.Readline;     // make instance of Readline parser
+let parser = new Readline();                                                            // make a new parser to read ASCII lines
+const serialPortParser = serialPort.pipe(parser);   
+
 // react only on every 8 bytes
-const SerialPortParserByteLength = require('@serialport/parser-byte-length');
-const serialPortParser = serialPort.pipe(new SerialPortParserByteLength({
-  length: 8
-}));
+//const SerialPortParserByteLength = require('@serialport/parser-byte-length');
+//const serialPortParser = serialPort.pipe();//new SerialPortParserByteLength({
+//  length: 8
+//}));
 
 // read every new chunk of data and store it in a global variable
 var hexStr;
@@ -60,6 +64,7 @@ webSocketServer.on('connection', function(ws) {
   // 'ws' is an internal WebSocket instance of WebSocket.Server.
   // Send current data on any request from client
   ws.on('message', function incoming(message) {
+//    console.log(hexStr);
     ws.send(hexStr);
   });
 });
